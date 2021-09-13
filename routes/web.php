@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+    return view('home');
+});
+//Rather  than use the following as allowed in 7.2 and below
+//Route::get('/user','UserController@index');
+//Use the following in 8 and above
+Route::get('/user','App\Http\Controllers\UserController@index');
