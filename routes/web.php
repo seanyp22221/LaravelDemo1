@@ -23,3 +23,7 @@ Route::get('/home', function () {
 //Route::get('/user','UserController@index');
 //Use the following in 8 and above
 Route::get('/user','App\Http\Controllers\UserController@index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

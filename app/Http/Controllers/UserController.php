@@ -4,15 +4,48 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent;
+use Illuminate\Database\Eloquent\Model;
+
+
 use App\Models\User;
 
 class UserController extends Controller
 {
     //
-    public function index(){
-        $user = new User();
-        dd($user);
+    public function index()
+    {
+        // $data = [
+        //     'name'  => 'Jeff Bezos',
+        //     'email' => 'jeffbezos@amazon.com',
+        //     'password' => 'password',
+        // ];
 
+        // User::create($data);
+        $user = User::all();
+        return $user;
+    }
+    public function index_old()
+    {
+        $user = new User();
+        //dd($user);
+        //ELOQUENT - CREATE
+        // $user->name = 'Tavia';
+        // $user->email = 'tavia@gmail.com';
+        // $user->password = bcrypt('T3st123');
+        // $user->save();
+
+        //ELOQUENT - READ
+        // $user = User::all();
+        // return $user;
+
+        //ELOQUENT - UPDATE
+        User::where('id', 3)->update(['name' => 'Cleopatra Jones']);
+        $user = User::all();
+        return $user;
+
+        //ELOQUENT - DELETE    
+        // User::where('id', 2)->delete();
 
 
         //return view('home');
@@ -34,6 +67,6 @@ class UserController extends Controller
 
         // $users = DB::select('select * from users');
         // return $users;    
-        //return 'I am in User Controller';
-    } 
+        return 'I am in User Controller';
+    }
 }
